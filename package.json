@@ -18,6 +18,8 @@
     "vash": "^0.12.1"
   },
   "devDependencies": {
-    "bower": "^1.7.9"
+    "bower": "^1.7.9",
+    "grunt": "^1.0.1",
+    "grunt-nodemon": "^0.4.2"
   }
 }

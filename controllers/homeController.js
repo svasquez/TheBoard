@@ -6,7 +6,7 @@
             
         
         res.render("index", { 
-            title: "Express with Vash" , 
+            title: "The Board 2" , 
             description : "This is from Server!!", 
             error:err,
             categories : results
