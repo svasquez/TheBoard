@@ -2,7 +2,43 @@
     var seedData = require("./seedData");
     var database = require("./database");
     data.getNoteCategories = function (next) {
-        next(null, seedData.initialNotes);
+        //next(null, seedData.initialNotes);
+        database.getDb(function (err,db) {
+            if (err) {
+                next(err,null);
+            } else {
+               db.notes.find().sort({name: -1}).toArray(function (err,results) {
+                   if (err) {
+                       next(err,null);
+                   } else {
+                      next(null,results); 
+                   }
+               }); 
+            }
+        });
+    };
+
+    data.createNewCategory = function (categoryName,next) {
+          database.getDb(function (err,db) {
+            if (err) {
+                next(err,null);
+            } else { 
+                var cat = {
+                    name : categoryName,
+                    notes : []
+                };
+
+                db.notes.insert(cat,function (err) {
+                    if (err) {
+                        next(err);
+                    } else {
+                        next(null);
+                    }
+                })
+
+
+            }
+        });
     };
 
     function seedDatabase() {
