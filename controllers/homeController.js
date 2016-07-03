@@ -9,7 +9,8 @@
                     title: "The Board 2",
                     description: "This is from Server!!",
                     error: err,
-                    categories: results
+                    categories: results,
+                    catNameError : req.flash("catNameError")
                 });
             });
         });
@@ -19,6 +20,7 @@
             data.createNewCategory(categoryName, function (err) {
                 if (err) {
                     //Handler error
+                    req.flash("catNameError",err);
                     res.redirect("/");
                 } else {
                     res.redirect("/notes/" + categoryName);
