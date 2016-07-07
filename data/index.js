@@ -18,6 +18,15 @@
         });
     };
 
+    data.getNotes = function(categoryName , next){
+        database.getDb(function (err,db) {
+        if (err) {
+                next(err,null);
+            } else { 
+                db.notes.findOne({name: categoryName},next);
+            }
+        });
+    };
     data.createNewCategory = function (categoryName,next) {
           database.getDb(function (err,db) {
             if (err) {
