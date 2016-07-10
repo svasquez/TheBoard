@@ -10,8 +10,8 @@ var session = require('express-session');
 //app.set("view engine","jade");
 //app.engine("ejs",ejsEngine); // supports master page
 app.set("view engine","vash"); // vash view engine
-
 //set the public static resource folder
+
 app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 app.use(session({
@@ -21,7 +21,7 @@ app.use(session({
 }));
 app.use(flash());
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 controllers.init(app);
 var server = http.createServer(app);
 
