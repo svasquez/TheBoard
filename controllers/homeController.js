@@ -15,6 +15,12 @@
             });
         });
 
+        app.get("/notes/:categoryName",function(req,resp){
+            var categoryName = req.params.categoryName;
+            resp.render("notes",{title : categoryName});
+
+        });
+
         app.post("/newCategory", (req, res) => {
             var categoryName = req.body.categoryName;
             data.createNewCategory(categoryName, function (err) {
