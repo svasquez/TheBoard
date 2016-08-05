@@ -17,6 +17,11 @@
             alert(error);
         })
 
+        var socket = io.connect();
+        socket.on("showThis", function (msg) {
+            alert(msg);
+        })
+
         $scope.save = function () {
             $http.post(notesUrl,$scope.newNotes)
             .then(function(result) {
